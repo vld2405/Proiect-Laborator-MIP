@@ -1,0 +1,54 @@
+{
+  "albums": [
+    {
+      "name": "Greatest Hits",
+      "artist": "Queen",
+      "trackCount": 2,
+      "songs": [
+        {
+          "name": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "timer": {
+            "hours": 0,
+            "minutes": 5,
+            "seconds": 55
+          }
+        },
+        {
+          "name": "Don't Stop Me Now",
+          "artist": "Queen",
+          "timer": {
+            "hours": 0,
+            "minutes": 3,
+            "seconds": 29
+          }
+        }
+      ]
+    },
+    {
+      "name": "Thriller",
+      "artist": "Michael Jackson",
+      "trackCount": 2,
+      "songs": [
+        {
+          "name": "Thriller",
+          "artist": "Michael Jackson",
+          "timer": {
+            "hours": 0,
+            "minutes": 5,
+            "seconds": 57
+          }
+        },
+        {
+          "name": "Billie Jean",
+          "artist": "Michael Jackson",
+          "timer": {
+            "hours": 0,
+            "minutes": 4,
+            "seconds": 54
+          }
+        }
+      ]
+    }
+  ]
+}
