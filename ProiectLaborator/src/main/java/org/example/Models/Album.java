@@ -58,7 +58,7 @@ public class Album extends MediaItem{
     public void print() {
         System.out.println("Album_name: " + this.name + "; Track Count: " + this.trackCount);
         for(Song song : this.songs) {
-            System.out.print("    - ");
+            System.out.print("\t" + (songs.indexOf(song) + 1) + ") ");
             song.print();
         }
     }

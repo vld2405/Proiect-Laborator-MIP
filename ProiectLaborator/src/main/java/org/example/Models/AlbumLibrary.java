@@ -8,10 +8,125 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AlbumLibrary implements IAlbumLibrary {
     private ArrayList<Album> albums;
     private int albumCount;
+
+    @Override
+    public void run() {
+        boolean printMenu = true;
+        Scanner scanner = new Scanner(System.in);
+
+        while(printMenu) {
+            System.out.println("===============================");
+            System.out.println("Menu:");
+            System.out.println("1. Print album library");
+            System.out.println("2. Clear album library");
+            System.out.println("3. Read last saved library (JSON)");
+            System.out.println("4. Save album library (JSON)");
+            System.out.println("5. Add new album");
+            System.out.println("6. Remove album");
+            System.out.println("7. Add new song to album");
+            System.out.println("8. Remove song from album");
+            System.out.println("9. Exit");
+            System.out.println("===============================");
+
+            System.out.print("Choose an action: ");
+            int choice = scanner.nextInt();
+            System.out.println();
+
+            switch (choice) {
+                case 1: { // PRINT
+                    print();
+                    break;
+                }
+
+                case 2: { // CLEAR
+                    clearLibrary();
+                    break;
+                }
+
+                case 3: {
+                    readFromJson("libraryInput.json");
+                    break;
+                }
+
+                case 4: {
+                    writeToJson("libraryOutput.json");
+                    break;
+                }
+
+                case 5: { // ADD ALBUM
+                    Album newAlbum = new Album();
+                    readAlbum(newAlbum);
+                    addAlbum(newAlbum);
+                    break;
+                }
+
+                case 6: { // DELETE ALBUM
+                    System.out.print("Enter album ID: ");
+
+                    int albumID = scanner.nextInt();
+                    if (albumID > 0 && albumID <= albums.size()) {
+                        removeAlbum(albums.get(albumID - 1));
+                    } else {
+                        System.out.println("Invalid album ID");
+                    }
+
+                    break;
+                }
+
+                case 7: { // ADD SONG
+                    Song newSong = new Song();
+                    readSong(newSong);
+
+                    System.out.print("Enter album ID to add song to: ");
+                    int albumID = scanner.nextInt();
+                    if(albumID > 0 && albumID <= albums.size()) {
+                        Album album = albums.get(albumID - 1);
+                        album.addSong(newSong);
+                    }
+                    else {
+                        System.out.println("Invalid song ID");
+                    }
+
+                    break;
+                }
+
+                case 8: { // DELETE SONG
+                    System.out.print("Enter album ID: ");
+                    int albumID = scanner.nextInt();
+                    System.out.print("Enter song ID: ");
+                    int songID = scanner.nextInt();
+
+                    if(albumID > 0 && albumID <= albums.size()) {
+                        if(songID > 0 && songID <= albums.get(albumID - 1).getSongs().size()) {
+                            Album album = albums.get(albumID - 1);
+                            ArrayList<Song> songs = album.getSongs();
+                            album.removeSong(songs.get(songID - 1));
+                        }
+                        else {
+                            System.out.println("Invalid song ID");
+                        }
+                    }
+                    else {
+                        System.out.println("Invalid album ID");
+                    }
+                    break;
+                }
+
+                case 9: { // EXIT
+                    printMenu = false;
+                    break;
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
 
     public AlbumLibrary() {
         this.albums = new ArrayList<>();
@@ -150,11 +265,65 @@ public class AlbumLibrary implements IAlbumLibrary {
     public void print() {
         System.out.println("Album Count: " + this.albumCount);
         for (Album album : this.albums) {
+            System.out.print((albums.indexOf(album) + 1) + ") ");
             album.print();
         }
     }
 
     public int getAlbumCount() {
         return this.albumCount;
+    }
+
+    private static void readAlbum(Album album) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter track count: ");
+        int trackCount = scanner.nextInt();
+
+        scanner.nextLine(); // blank space
+
+        System.out.print("Enter album name: ");
+        String albumName = scanner.nextLine();
+
+        System.out.print("Enter artist name: ");
+        String artistName = scanner.nextLine();
+
+        ArrayList<Song> songs = new ArrayList<>();
+
+        for(int i = 0 ; i < trackCount ; i++) {
+            Song newSong = new Song();
+            readSong(newSong);
+            songs.add(newSong);
+        }
+
+        album.setName(albumName);
+        album.setArtist(artistName);
+        album.setSongs(songs);
+
+        System.out.println("Album successfully read!");
+    }
+
+    private static void readSong(Song song) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter song name: ");
+        String songName = scanner.nextLine();
+
+        System.out.print("Enter artist name: ");
+        String artistName = scanner.nextLine();
+
+        System.out.print("Enter song duration (minutes): ");
+        int minutes = scanner.nextInt();
+
+        System.out.print("Enter song duration (seconds): ");
+        int seconds = scanner.nextInt();
+
+        Timer timer = new Timer(minutes, seconds);
+
+        song.setTimer(timer);
+        song.setName(songName);
+        song.setArtist(artistName);
+
+        System.out.println("Song successfully read!");
     }
 }
