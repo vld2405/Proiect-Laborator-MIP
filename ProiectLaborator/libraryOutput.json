@@ -1,25 +1,52 @@
-{"albums": [{
-    "trackCount": 2,
-    "artist": "Metro Boomin",
-    "songs": [
-        {
-            "timer": {
-                "hours": 0,
-                "seconds": 15,
-                "minutes": 3
+{"albums": [
+    {
+        "trackCount": 2,
+        "artist": "Queen",
+        "songs": [
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 55,
+                    "minutes": 5
+                },
+                "artist": "Queen",
+                "name": "Bohemian Rhapsody"
             },
-            "artist": "Travis Scott",
-            "name": "Trance"
-        },
-        {
-            "timer": {
-                "hours": 0,
-                "seconds": 16,
-                "minutes": 5
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 29,
+                    "minutes": 3
+                },
+                "artist": "Queen",
+                "name": "Don't Stop Me Now"
+            }
+        ],
+        "name": "Greatest Hits"
+    },
+    {
+        "trackCount": 2,
+        "artist": "Michael Jackson",
+        "songs": [
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 57,
+                    "minutes": 5
+                },
+                "artist": "Michael Jackson",
+                "name": "Thriller"
             },
-            "artist": "The Weeknd",
-            "name": "Creepin"
-        }
-    ],
-    "name": "Heroes and Villains"
-}]}
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 54,
+                    "minutes": 4
+                },
+                "artist": "Michael Jackson",
+                "name": "Billie Jean"
+            }
+        ],
+        "name": "Thriller"
+    }
+]}

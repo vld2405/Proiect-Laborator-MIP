@@ -71,6 +71,7 @@ public class AlbumLibrary implements IAlbumLibrary {
                     int albumID = scanner.nextInt();
                     if (albumID > 0 && albumID <= albums.size()) {
                         removeAlbum(albums.get(albumID - 1));
+                        System.out.println("Album successfully removed.");
                     } else {
                         System.out.println("Invalid album ID");
                     }
@@ -87,6 +88,7 @@ public class AlbumLibrary implements IAlbumLibrary {
                     if(albumID > 0 && albumID <= albums.size()) {
                         Album album = albums.get(albumID - 1);
                         album.addSong(newSong);
+                        System.out.println("Song successfully added.");
                     }
                     else {
                         System.out.println("Invalid song ID");
@@ -106,6 +108,7 @@ public class AlbumLibrary implements IAlbumLibrary {
                             Album album = albums.get(albumID - 1);
                             ArrayList<Song> songs = album.getSongs();
                             album.removeSong(songs.get(songID - 1));
+                            System.out.println("Song successfully removed.");
                         }
                         else {
                             System.out.println("Invalid song ID");
@@ -162,6 +165,7 @@ public class AlbumLibrary implements IAlbumLibrary {
     @Override
     public void clearLibrary()
     {
+        System.out.println("Clearing library");
         this.albums.clear();
         this.albumCount = albums.size();
     }
@@ -251,6 +255,7 @@ public class AlbumLibrary implements IAlbumLibrary {
             libraryJson.put("albums", albumsArray);
 
             Files.write(Paths.get(JSONFilePath), libraryJson.toString(4).getBytes());
+            System.out.println("JSON file successfully written to: " + JSONFilePath);
 
         } catch (IOException e) {
             System.err.println("Error writing to JSON file: " + e.getMessage());
