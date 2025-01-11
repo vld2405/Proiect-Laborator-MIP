@@ -70,8 +70,12 @@ public class Timer {
 
     public void print() {
         if(hours > 0 )
-            System.out.print(hours + ":" + minutes + ":" + seconds);
+            System.out.print(hours + ":" + minutes + ":");
         else
-            System.out.print(minutes + ":" + seconds);
+            System.out.print(minutes + ":");
+        if(seconds < 10)
+            System.out.print("0" + seconds);
+        else
+            System.out.print(seconds);
     }
 }

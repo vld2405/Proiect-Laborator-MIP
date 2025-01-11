@@ -277,16 +277,14 @@ public class AlbumLibrary implements IAlbumLibrary {
     private static void readAlbum(Album album) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter track count: ");
-        int trackCount = scanner.nextInt();
-
-        scanner.nextLine(); // blank space
-
         System.out.print("Enter album name: ");
         String albumName = scanner.nextLine();
 
         System.out.print("Enter artist name: ");
         String artistName = scanner.nextLine();
+
+        System.out.print("Enter track count: ");
+        int trackCount = scanner.nextInt();
 
         ArrayList<Song> songs = new ArrayList<>();
 
