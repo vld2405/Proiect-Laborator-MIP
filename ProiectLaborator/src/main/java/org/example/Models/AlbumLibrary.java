@@ -302,6 +302,7 @@ public class AlbumLibrary implements IAlbumLibrary {
         album.setName(albumName);
         album.setArtist(artistName);
         album.setSongs(songs);
+        album.setTrackCount(trackCount);
 
         System.out.println("Album successfully read!");
     }
