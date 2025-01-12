@@ -1,7 +1,5 @@
 package org.example.Models;
 
-import javax.swing.*;
-
 public class Timer {
     private int hours;
     private int minutes;
@@ -21,36 +19,36 @@ public class Timer {
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
-        normalizeTime();
+        NormalizeTime();
     }
 
-    public int getHours() {
+    public int GetHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public void SetHours(int hours) {
         this.hours = hours;
     }
 
-    public int getMinutes() {
+    public int GetMinutes() {
         return minutes;
     }
 
-    public void setMinutes(int minutes) {
+    public void SetMinutes(int minutes) {
         this.minutes = minutes;
-        normalizeTime();
+        NormalizeTime();
     }
 
-    public int getSeconds() {
+    public int GetSeconds() {
         return seconds;
     }
 
-    public void setSeconds(int seconds) {
+    public void SetSeconds(int seconds) {
         this.seconds = seconds;
-        normalizeTime();
+        NormalizeTime();
     }
 
-    private void normalizeTime() {
+    private void NormalizeTime() {
         this.minutes += this.seconds / 60;
         this.seconds %= 60;
 
@@ -68,7 +66,7 @@ public class Timer {
         }
     }
 
-    public void print() {
+    public void Print() {
         if(hours > 0 )
             System.out.print(hours + ":" + minutes + ":");
         else

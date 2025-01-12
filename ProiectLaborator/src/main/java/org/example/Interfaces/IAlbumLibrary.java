@@ -2,12 +2,26 @@ package org.example.Interfaces;
 
 import org.example.Models.Album;
 
+import java.util.ArrayList;
+
 public interface IAlbumLibrary {
-    void run();
-    void print();
-    void addAlbum(Album album);
-    void removeAlbum(Album album);
-    void clearLibrary();
-    void readFromJson(String JSONFilePath);
-    void writeToJson(String JSONFilePath);
+    void Run();
+
+    void Print();
+
+    void AddAlbum(Album album);
+
+    void RemoveAlbum(Album album);
+
+    void ClearLibrary();
+
+    void ReadFromJson(String JSONFilePath);
+
+    void WriteToJson(String JSONFilePath);
+
+    ArrayList<Album> GetAlbums();
+
+    void SetAlbums(ArrayList<Album> albums);
+
+    int GetAlbumCount();
 }

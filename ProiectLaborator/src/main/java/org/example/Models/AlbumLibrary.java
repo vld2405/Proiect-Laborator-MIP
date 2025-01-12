@@ -1,6 +1,6 @@
 package org.example.Models;
 
-import org.example.Interfaces.*;
+import org.example.Interfaces.IAlbumLibrary;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,11 +15,11 @@ public class AlbumLibrary implements IAlbumLibrary {
     private int albumCount;
 
     @Override
-    public void run() {
+    public void Run() {
         boolean printMenu = true;
         Scanner scanner = new Scanner(System.in);
 
-        while(printMenu) {
+        while (printMenu) {
             System.out.println("===============================");
             System.out.println("Menu:");
             System.out.println("1. Print album library");
@@ -39,29 +39,29 @@ public class AlbumLibrary implements IAlbumLibrary {
 
             switch (choice) {
                 case 1: { // PRINT
-                    print();
+                    Print();
                     break;
                 }
 
                 case 2: { // CLEAR
-                    clearLibrary();
+                    ClearLibrary();
                     break;
                 }
 
                 case 3: {
-                    readFromJson("libraryInput.json");
+                    ReadFromJson("libraryInput.json");
                     break;
                 }
 
                 case 4: {
-                    writeToJson("libraryOutput.json");
+                    WriteToJson("libraryOutput.json");
                     break;
                 }
 
                 case 5: { // ADD ALBUM
                     Album newAlbum = new Album();
-                    readAlbum(newAlbum);
-                    addAlbum(newAlbum);
+                    ReadAlbum(newAlbum);
+                    AddAlbum(newAlbum);
                     break;
                 }
 
@@ -70,7 +70,7 @@ public class AlbumLibrary implements IAlbumLibrary {
 
                     int albumID = scanner.nextInt();
                     if (albumID > 0 && albumID <= albums.size()) {
-                        removeAlbum(albums.get(albumID - 1));
+                        RemoveAlbum(albums.get(albumID - 1));
                         System.out.println("Album successfully removed.");
                     } else {
                         System.out.println("Invalid album ID");
@@ -81,16 +81,15 @@ public class AlbumLibrary implements IAlbumLibrary {
 
                 case 7: { // ADD SONG
                     Song newSong = new Song();
-                    readSong(newSong);
+                    ReadSong(newSong);
 
                     System.out.print("Enter album ID to add song to: ");
                     int albumID = scanner.nextInt();
-                    if(albumID > 0 && albumID <= albums.size()) {
+                    if (albumID > 0 && albumID <= albums.size()) {
                         Album album = albums.get(albumID - 1);
-                        album.addSong(newSong);
+                        album.AddSong(newSong);
                         System.out.println("Song successfully added.");
-                    }
-                    else {
+                    } else {
                         System.out.println("Invalid song ID");
                     }
 
@@ -103,18 +102,16 @@ public class AlbumLibrary implements IAlbumLibrary {
                     System.out.print("Enter song ID: ");
                     int songID = scanner.nextInt();
 
-                    if(albumID > 0 && albumID <= albums.size()) {
-                        if(songID > 0 && songID <= albums.get(albumID - 1).getSongs().size()) {
+                    if (albumID > 0 && albumID <= albums.size()) {
+                        if (songID > 0 && songID <= albums.get(albumID - 1).GetSongs().size()) {
                             Album album = albums.get(albumID - 1);
-                            ArrayList<Song> songs = album.getSongs();
-                            album.removeSong(songs.get(songID - 1));
+                            ArrayList<Song> songs = album.GetSongs();
+                            album.RemoveSong(songs.get(songID - 1));
                             System.out.println("Song successfully removed.");
-                        }
-                        else {
+                        } else {
                             System.out.println("Invalid song ID");
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println("Invalid album ID");
                     }
                     break;
@@ -136,42 +133,42 @@ public class AlbumLibrary implements IAlbumLibrary {
         this.albumCount = 0;
     }
 
-    public ArrayList<Album> getAlbums() {
+    @Override
+    public ArrayList<Album> GetAlbums() {
         return albums;
     }
 
-    public void setAlbums(ArrayList<Album> albums) {
+    @Override
+    public void SetAlbums(ArrayList<Album> albums) {
         this.albums = albums;
         this.albumCount = albums.size();
     }
 
     @Override
-    public void addAlbum(Album album) {
+    public void AddAlbum(Album album) {
         this.albums.add(album);
         this.albumCount++;
     }
 
     @Override
-    public void removeAlbum(Album album) {
-        if(this.albums.contains(album)) {
+    public void RemoveAlbum(Album album) {
+        if (this.albums.contains(album)) {
             this.albums.remove(album);
             this.albumCount--;
-        }
-        else {
+        } else {
             System.out.println("Album does not exist");
         }
     }
 
     @Override
-    public void clearLibrary()
-    {
+    public void ClearLibrary() {
         System.out.println("Clearing library");
         this.albums.clear();
         this.albumCount = albums.size();
     }
 
     @Override
-    public void readFromJson(String JSONFilePath) {
+    public void ReadFromJson(String JSONFilePath) {
         try {
             System.out.println("Reading JSON file from: " + JSONFilePath);
             String jsonContent = new String(Files.readAllBytes(Paths.get(JSONFilePath)));
@@ -207,7 +204,7 @@ public class AlbumLibrary implements IAlbumLibrary {
                 }
 
                 Album album = new Album(albumName, artistName, songs);
-                this.addAlbum(album);
+                this.AddAlbum(album);
             }
 
         } catch (IOException e) {
@@ -219,7 +216,7 @@ public class AlbumLibrary implements IAlbumLibrary {
 
 
     @Override
-    public void writeToJson(String JSONFilePath) {
+    public void WriteToJson(String JSONFilePath) {
         try {
             JSONObject libraryJson = new JSONObject();
             JSONArray albumsArray = new JSONArray();
@@ -227,22 +224,22 @@ public class AlbumLibrary implements IAlbumLibrary {
             for (Album album : this.albums) {
 
                 JSONObject albumObj = new JSONObject();
-                albumObj.put("name", album.getName());
-                albumObj.put("artist", album.getArtist());
-                albumObj.put("trackCount", album.getTrackCount());
+                albumObj.put("name", album.GetName());
+                albumObj.put("artist", album.GetArtist());
+                albumObj.put("trackCount", album.GetTrackCount());
 
                 JSONArray songsArray = new JSONArray();
 
-                for (Song song : album.getSongs()) {
+                for (Song song : album.GetSongs()) {
 
                     JSONObject songObj = new JSONObject();
-                    songObj.put("name", song.getName());
-                    songObj.put("artist", song.getArtist());
+                    songObj.put("name", song.GetName());
+                    songObj.put("artist", song.GetArtist());
 
                     JSONObject timerObj = new JSONObject();
-                    timerObj.put("hours", song.getTimer().getHours());
-                    timerObj.put("minutes", song.getTimer().getMinutes());
-                    timerObj.put("seconds", song.getTimer().getSeconds());
+                    timerObj.put("hours", song.GetTimer().GetHours());
+                    timerObj.put("minutes", song.GetTimer().GetMinutes());
+                    timerObj.put("seconds", song.GetTimer().GetSeconds());
 
                     songObj.put("timer", timerObj);
                     songsArray.put(songObj);
@@ -265,21 +262,21 @@ public class AlbumLibrary implements IAlbumLibrary {
     }
 
 
-
     @Override
-    public void print() {
+    public void Print() {
         System.out.println("Album Count: " + this.albumCount);
         for (Album album : this.albums) {
             System.out.print((albums.indexOf(album) + 1) + ") ");
-            album.print();
+            album.Print();
         }
     }
 
-    public int getAlbumCount() {
+    @Override
+    public int GetAlbumCount() {
         return this.albumCount;
     }
 
-    private static void readAlbum(Album album) {
+    private static void ReadAlbum(Album album) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter album name: ");
@@ -293,21 +290,21 @@ public class AlbumLibrary implements IAlbumLibrary {
 
         ArrayList<Song> songs = new ArrayList<>();
 
-        for(int i = 0 ; i < trackCount ; i++) {
+        for (int i = 0; i < trackCount; i++) {
             Song newSong = new Song();
-            readSong(newSong);
+            ReadSong(newSong);
             songs.add(newSong);
         }
 
-        album.setName(albumName);
-        album.setArtist(artistName);
-        album.setSongs(songs);
-        album.setTrackCount(trackCount);
+        album.SetName(albumName);
+        album.SetArtist(artistName);
+        album.SetSongs(songs);
+        album.SetTrackCount(trackCount);
 
         System.out.println("Album successfully read!");
     }
 
-    private static void readSong(Song song) {
+    private static void ReadSong(Song song) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter song name: ");
@@ -324,9 +321,9 @@ public class AlbumLibrary implements IAlbumLibrary {
 
         Timer timer = new Timer(minutes, seconds);
 
-        song.setTimer(timer);
-        song.setName(songName);
-        song.setArtist(artistName);
+        song.SetTimer(timer);
+        song.SetName(songName);
+        song.SetArtist(artistName);
 
         System.out.println("Song successfully read!");
     }

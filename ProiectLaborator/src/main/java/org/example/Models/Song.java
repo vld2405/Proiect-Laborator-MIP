@@ -10,17 +10,17 @@ public class Song extends MediaItem {
         this.timer = timer;
     }
 
-    public Timer getTimer() {
+    public Timer GetTimer() {
         return timer;
     }
 
-    public void setTimer(Timer timer) {
+    public void SetTimer(Timer timer) {
         this.timer = timer;
     }
 
-    public void print() {
+    public void Print() {
         System.out.print("Song_name: " + name + "; Artist: " + artist + "; Timer: ");
-        timer.print();
+        timer.Print();
         System.out.println();
     }
 }

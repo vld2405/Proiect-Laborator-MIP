@@ -14,21 +14,21 @@ public abstract class MediaItem {
         this.artist = artist;
     }
 
-    public String getName() {
+    public String GetName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void SetName(String name) {
         this.name = name;
     }
 
-    public String getArtist() {
+    public String GetArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
+    public void SetArtist(String artist) {
         this.artist = artist;
     }
 
-    public abstract void print();
+    public abstract void Print();
 }

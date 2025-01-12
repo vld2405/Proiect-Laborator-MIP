@@ -13,17 +13,17 @@ class AlbumTest {
     public void testAddSong() {
         Album album = new Album("Test Album", "Test Artist", new ArrayList<>());
         Song song = new Song("Test Song", "Test Artist", new Timer(3, 30));
-        album.addSong(song);
-        assertTrue(album.containsSong(song));
+        album.AddSong(song);
+        assertTrue(album.ContainsSong(song));
     }
 
     @Test
     public void testRemoveSong() {
         Album album = new Album("Test Album", "Test Artist", new ArrayList<>());
         Song song = new Song("Test Song", "Test Artist", new Timer(3, 30));
-        album.addSong(song);
-        album.removeSong(song);
-        assertFalse(album.containsSong(song));
+        album.AddSong(song);
+        album.RemoveSong(song);
+        assertFalse(album.ContainsSong(song));
     }
 
     @Test
@@ -35,12 +35,12 @@ class AlbumTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        album.removeSong(song);
+        album.RemoveSong(song);
 
         // Resetăm consola
         System.setOut(System.out);
 
-        assertEquals(0, album.getTrackCount());
+        assertEquals(0, album.GetTrackCount());
         assertTrue(outContent.toString().contains("Song does not exist"));
     }
 
@@ -48,8 +48,8 @@ class AlbumTest {
     public void testAlbumContainsSong() {
         Song song = new Song("Test Song", "Test Artist", new Timer(3, 30));
         Album album = new Album();
-        album.addSong(song);
-        assertTrue(album.containsSong(song));
+        album.AddSong(song);
+        assertTrue(album.ContainsSong(song));
     }
 
     @Test
@@ -57,8 +57,8 @@ class AlbumTest {
         Song existingSong = new Song("Test Song", "Test Artist", new Timer(3, 30));
         Song notExistingSong = new Song("Test Song 2", "Test Artist", new Timer(3, 30));
         Album album = new Album();
-        album.addSong(existingSong);
-        assertFalse(album.containsSong(notExistingSong));
+        album.AddSong(existingSong);
+        assertFalse(album.ContainsSong(notExistingSong));
     }
 
 }
