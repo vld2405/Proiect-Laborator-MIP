@@ -285,7 +285,7 @@ public class AlbumLibrary implements IAlbumLibrary {
         System.out.print("Enter album name: ");
         String albumName = scanner.nextLine();
 
-        System.out.print("Enter artist name: ");
+        System.out.print("Enter artist name/s: ");
         String artistName = scanner.nextLine();
 
         System.out.print("Enter track count: ");
@@ -313,7 +313,7 @@ public class AlbumLibrary implements IAlbumLibrary {
         System.out.print("Enter song name: ");
         String songName = scanner.nextLine();
 
-        System.out.print("Enter artist name: ");
+        System.out.print("Enter artist name/s: ");
         String artistName = scanner.nextLine();
 
         System.out.print("Enter song duration (minutes): ");
