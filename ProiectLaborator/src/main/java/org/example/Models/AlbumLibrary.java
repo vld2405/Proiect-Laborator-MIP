@@ -54,7 +54,7 @@ public class AlbumLibrary implements IAlbumLibrary {
                 }
 
                 case 4: {
-                    WriteToJson("libraryOutput.json");
+                    WriteToJson("libraryInput.json");
                     break;
                 }
 

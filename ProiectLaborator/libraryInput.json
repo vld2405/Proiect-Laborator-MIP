@@ -1,54 +1,66 @@
-{
-  "albums": [
+{"albums": [
     {
-      "name": "Greatest Hits",
-      "artist": "Queen",
-      "trackCount": 2,
-      "songs": [
-        {
-          "name": "Bohemian Rhapsody",
-          "artist": "Queen",
-          "timer": {
-            "hours": 0,
-            "minutes": 5,
-            "seconds": 55
-          }
-        },
-        {
-          "name": "Don't Stop Me Now",
-          "artist": "Queen",
-          "timer": {
-            "hours": 0,
-            "minutes": 3,
-            "seconds": 29
-          }
-        }
-      ]
+        "trackCount": 2,
+        "artist": "Queen",
+        "songs": [
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 55,
+                    "minutes": 5
+                },
+                "artist": "Queen",
+                "name": "Bohemian Rhapsody"
+            },
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 29,
+                    "minutes": 3
+                },
+                "artist": "Queen",
+                "name": "Don't Stop Me Now"
+            }
+        ],
+        "name": "Greatest Hits"
     },
     {
-      "name": "Thriller",
-      "artist": "Michael Jackson",
-      "trackCount": 2,
-      "songs": [
-        {
-          "name": "Thriller",
-          "artist": "Michael Jackson",
-          "timer": {
-            "hours": 0,
-            "minutes": 5,
-            "seconds": 57
-          }
-        },
-        {
-          "name": "Billie Jean",
-          "artist": "Michael Jackson",
-          "timer": {
-            "hours": 0,
-            "minutes": 4,
-            "seconds": 54
-          }
-        }
-      ]
+        "trackCount": 2,
+        "artist": "Michael Jackson",
+        "songs": [
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 57,
+                    "minutes": 5
+                },
+                "artist": "Michael Jackson",
+                "name": "Thriller"
+            },
+            {
+                "timer": {
+                    "hours": 0,
+                    "seconds": 54,
+                    "minutes": 4
+                },
+                "artist": "Michael Jackson",
+                "name": "Billie Jean"
+            }
+        ],
+        "name": "Thriller"
+    },
+    {
+        "trackCount": 1,
+        "artist": "Ian",
+        "songs": [{
+            "timer": {
+                "hours": 0,
+                "seconds": 0,
+                "minutes": 0
+            },
+            "artist": "Ian",
+            "name": "Nu exista"
+        }],
+        "name": "Slayer 2"
     }
-  ]
-}
+]}
